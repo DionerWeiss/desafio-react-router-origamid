@@ -27,14 +27,18 @@ function Produto() {
 
   }, [id])
 
-  if (loading) return <di>Carregando...</di>
+  if (loading) return <div className="loading"/>
   if (error) return <p>{error}</p>
   if (produto === null) return null
 
   return (
     <section className={styles.produto + ' animeLeft'}>
-      <Head title={`Ranek | ${produto.nome}`} description={`Este é um produto: ${produto.nome}`}/>
-      {produto.fotos.map(foto => <img key={foto.src} src={foto.src} alt={foto.titulo}/>)}
+      <Head title={`Ranek | ${produto.nome}`} description={`Este é um produto: ${produto.nome}`} />
+
+      <div>
+        {produto.fotos.map(foto => 
+        <img key={foto.src} src={foto.src} alt={foto.titulo} />)}
+      </div>
       <div>
         <h1>{produto.nome}</h1>
         <span className={styles.preco}>R$ {produto.preco}</span>
